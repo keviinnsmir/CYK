@@ -1,0 +1,283 @@
+/* Estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo con partículas flotantes */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    animation: particleAnimation 20s infinite linear;
+}
+
+/* Animación del ticker (cinta de supermercado) */
+.ticker {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #C1A1FF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+    animation: ticker 20s linear infinite;
+}
+
+.ticker span {
+    display: inline-block;
+    padding-right: 100%;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Menú de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #C1A1FF; /* Fondo oscuro para el menú */
+    color: #2D3436;
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.navbar .logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    color: #2D3436;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #2D3436;
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #2D3436;
+    transform: scale(1.2);
+}
+
+.navbar ul li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Menú hamburguesa para dispositivos móviles */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.menu-toggle .bar {
+    width: 30px;
+    height: 5px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links.active {
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: #1A1A1D;
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links li {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Sección de la portada */
+.hero {
+    position: relative;
+    height: 75vh;
+    background-image: url('C3995AA5-D914-40B8-A4E4-E72319A8BBFB.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    animation: heroAnimation 1.5s ease-out;
+}
+
+.hero-text {
+    z-index: 1;
+    position: relative;
+}
+
+.hero-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    color: #ffffff;
+    text-shadow: 0 0 50px #C1A1FF, 0 0 80px #C1A1FF;
+    animation: textGlow 2s infinite alternate;
+}
+
+.hero-text p {
+    font-size: 2rem;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 1s forwards;
+}
+
+/* Animación para el texto de la portada */
+@keyframes textGlow {
+    0% { text-shadow: 0 0 20px #C1A1FF, 0 0 30px #C1A1FF; }
+    100% { text-shadow: 0 0 30px #C1A1FF, 0 0 40px #C1A1FF; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroAnimation {
+    0% { transform: scale(1.05); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Sección de Momentos Inolvidables */
+.momentos {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    text-align: center; /* Centrado de todo el texto */
+    position: relative;
+    animation: fadeInText 1.5s ease-out;
+}
+
+.momentos h2 {
+    font-size: 3rem;
+    color: #a67bfa;
+    margin-bottom: 30px;
+}
+
+.momentos-container {
+    display: block; /* Cambiado de flex a block para apilar las imágenes debajo del texto */
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.text-momento {
+    text-align: center; /* Centrado del texto */
+    animation: slideInLeft 2s ease-out;
+}
+
+.texto-animado {
+    font-size: 2.5rem;
+    color: #000000;
+    font-weight: bold;
+    animation: fadeInText 2s ease-out 0.5s;
+}
+
+.descripcion {
+    font-size: 1.5rem;
+    color: #000000;
+    margin-top: 20px;
+    animation: fadeInText 3s ease-out 1s;
+}
+
+/* Animación para las imágenes */
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animado-img {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease, opacity 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.animado-img:hover {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.9;
+    filter: brightness(1.2) saturate(1.5);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #C1A1FF;
+    color: rgb(0, 0, 0);
+}
+
+footer p {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
